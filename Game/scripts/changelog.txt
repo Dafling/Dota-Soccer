@@ -1,0 +1,27 @@
+29.06
+e Timers, how to get center of a block (rect)
+
+30.06
+e OOP in lua
+
+01.07
++pitch markup
++high W
+
+03.07
+e smooth turning
+
+04.07
+e sounds
+e map size
+
+05.07
+e messages
++fixed crash issue
+
+06.07
++headers
++flag
+
+08.07
++V animation

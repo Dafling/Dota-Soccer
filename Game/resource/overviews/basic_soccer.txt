@@ -1,0 +1,8 @@
+basic_soccer
+{
+	material materials/overviews/basic_soccer.vmat
+	pos_x -3072
+	pos_y 2944
+	scale 6.250
+}
+

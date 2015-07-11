@@ -1,0 +1,125 @@
+
+-github setup
+-peasant height testing
+-thread with questions
+-prestart loading/skip game setup
+| PlayerResource:IsValidPlayer
+-team score update
+-100% smooth hero jump
+-zxcv items
+
+? ball animations
+? how to get triggered rect name
+? make heroes unselectable
+? custom tiles
+
+? asymmetrical line drawing issue
+? more efficient line drawing mechanism?
+? cant import some lines in 3dsmax
+? R/T as hotkey?
+? is Ball.H field necessary?
+? emulating bot players
+
+-goal physics
+-throwin mechanism
+
+MPl (Multiple Players Support):
++overtake ball possession
++run get ball checks for all players
++Ball:disableInteraction calls
++isunitenemy() check to get ball
++abilities should work for all players
++2 teams, 5 players each
+?preferential get ball system
+-headers, chase Z support
+-spawning on left or right side of pitch
+
+Testing/debugging:
+b wrong ball height after C -> getting ball -> Q
+b fast ball triggers OnStartTouch twice in outs
+
+f flag: fix bad movement
+f heading bugs the ball
+
+t isunitenemy() check to get ball
+t what should the get_ball_dist value be?
+? get units in sphere/circle of radius 100
+
+Gameplay compatibility
++ gradual facing implementation?
++ heading on ground
++ high X
++ graphical V
+? ball animations
+? R as Jump hotkey
+? high V+Z
+? 'turn delay' before C
+? 0.03 headers, slides
+? pass to me! ability
+
+? Ball.DefaultHeight setting
+? Peasant <-> Kobold, Ball size & height compatibility
+? correlation between dota2 and war3 distances
+| what should the get_ball_dist value be?
+? get units in sphere/circle of radius 100
+| FindUnitsInRadius
+
+Systems to do in 'Basic' Soccer:
++pitch markup (get figures from wc3 pitch)
++slides, headers
+-chase z mechanism
+-header aiming algorithms
+-goal physics
++outs handling
+-basic scoreboard
++custom ball sounds
+
+On hold until 'Advanced' Soccer:
+-keeper AI
+-extra time, half time
+
+Feature ideas:
+-elo rankings (netTables)
+-skip game setup and hero selection screens
+
+Gameplay options:
+-V mod
+-Curve
+-futsal mode
+-Keeper AI/Keeper control
+
+Edu
+-lua manual
+-lua x in y tutorial
+-BMD's tile editor vid
+-(moddota/reddit tuts)
+
+FAQ
+-how to make the pitch region transparent in editor?
+-how to get center of a block (rect)
+-basic OOP in lua
+-how to get target/caster in ability handler
+-how to make a variable visible anywhere in the code
+-how to set units collision size to a minimum value
+-how to set a new direction for vector
+-how to get direction of facing of an entity
+-how to get entity coordinates
+-world bounds
+-how to smoothly change unit facing
+-how to create a unit at a specific location
+-scaleform crash issue
+-changing height while moving
+
+Graphics & Text
+-pitch & map graphics
+-lines, corner flag
+-slide graphics
+-ball animations
++goal model
+-models for peasants/peons?
+-ability icons?
+-loadscreen?
+
+-ability tooltips?
+| game - resource/addon_english.txt
+-promotional description + video?

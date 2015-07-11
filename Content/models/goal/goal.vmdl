@@ -1,0 +1,465 @@
+<!-- schema text {7e125a45-3d83-4043-b292-9e24f8ef27b4} generic {198980d8-3a93-4919-b4c6-dd1fb07a3a4b} -->
+CVModel CVModel_0
+{
+	CVmeshList m_meshList = CVmeshList
+	{
+		CVmesh[] m_meshList = 
+		[
+			CVmesh
+			{
+				string m_meshName = "goal"
+				string m_meshFile = "models/goal/goal.fbx"
+				string m_materialSearchPath = ""
+				bool m_bSkinParentedObjects = true
+				bool m_bLegacySkinParentedTransforms = false
+				bool m_bExpensiveTangents = false
+				bool m_bExpensiveVertices = false
+				bool m_bIgnoreCloth = false
+				bool m_bGetSkinningFromLod0 = false
+				CVmorphInfo* m_pMorphInfo = NULL
+			}
+		]
+	}
+	CVClothProxyMeshList m_clothProxyMeshList = CVClothProxyMeshList
+	{
+		CVClothProxyMesh[] m_clothProxyMeshList = 
+		[
+			
+		]
+		float m_flClothEnableThreshold = 0.050000
+		bool m_bCreateStaticBone = false
+		int m_nMaxBonesPerVertex = 4
+		bool m_bRemoveUnusedBonesEnabled = false
+		bool m_bDriveMeshesWithBacksolvedJointsOnly = true
+		float m_flMatchProxiesToMeshes = 1.000000
+		float m_flReservedFloat = 0.000000
+		int m_nReservedInt = 0
+		bool m_bReservedBool1 = false
+		bool m_bReservedBool2 = false
+		bool m_bReservedBool3 = false
+		bool m_bReservedBool4 = false
+	}
+	CVphysicsMeshList m_physicsMeshList = CVphysicsMeshList
+	{
+		CVphysicsMesh[] m_meshList = 
+		[
+			
+		]
+	}
+	CVmodelInfo* m_pModelInfo = NULL
+	CVBoneFlagListReference m_pBoneFlagList = CVBoneFlagListReference
+	{
+		CVBoneFlagList* m_pObject = NULL
+		string m_sFileName = ""
+	}
+	CVhitBoxSetListReference[] m_pHitBoxSetLists = 
+	[
+		
+	]
+	CVattachmentListReference[] m_pAttachmentLists = 
+	[
+		
+	]
+	CVanimGroupReference[] m_pAnimGroups = 
+	[
+		
+	]
+	CVNodeMaterialGroupListReference m_pMaterialGroupList = CVNodeMaterialGroupListReference
+	{
+		NodeMaterialGroupList_t* m_pObject = NULL
+		string m_sFileName = ""
+	}
+	CVMeshGroupListReference m_pMeshGroupList = CVMeshGroupListReference
+	{
+		MeshGroupList_t* m_pObject = NULL
+		string m_sFileName = ""
+	}
+	CVLODGroupListReference m_pLodGroupList = CVLODGroupListReference
+	{
+		LODGroupList_t* m_pObject = NULL
+		string m_sFileName = ""
+	}
+	CVpropBreakableListReference m_pPropBreakableList = CVpropBreakableListReference
+	{
+		CVpropBreakableList* m_pObject = NULL
+		string m_sFileName = ""
+	}
+	CVpropDataListReference m_pPropDataList = CVpropDataListReference
+	{
+		CVpropDataList* m_pObject = NULL
+		string m_sFileName = ""
+	}
+	CVConstraintListReference[] m_pConstraintLists = 
+	[
+		
+	]
+	string m_collision = ""
+	string m_softbody = ""
+	string m_sMDLFilename = ""
+	string[] m_sOffsetHitboxSets = 
+	[
+		
+	]
+	float(3) m_vHitboxSetOffset = ( 0.000000, 0.000000, 0.000000 )
+	string[] m_scriptFiles = 
+	[
+		
+	]
+	CVMaterialRemapList* m_pMaterialRemapList = &CVMaterialRemapList_0
+	float m_flFbxScale = 1.000000
+	float m_flQCScale = 1.000000
+	float(3) m_vOrigin = ( 0.000000, 0.000000, 0.000000 )
+	CVPsf* m_pvPsf = NULL
+	string m_keyValueText = ""
+	bool m_bStaticProp = false
+	bool m_bEnableClothProcessing = true
+	float m_flClothEnableThreshold = 0.050000
+	int m_nMaxClothVertsPerMesh = 2048
+	bool m_bBuildClothBoneHierarchy = false
+	symbol m_nNavType = AUTH_NAV_MESH
+	bool m_bMakeUniqueVMeshes = false
+	bool m_bMakeImplicitBindPoseSequence = false
+	bool m_bAdjustSkeletonFromBoneFlags = false
+}
+
+CVMaterialRemapList CVMaterialRemapList_0
+{
+	CVMaterialRemap[] m_vMaterialRemapList = 
+	[
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal1.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal2.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal3.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal4.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal5.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal6.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal7.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal8.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal9.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal10.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal11.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal12.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal13.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal14.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal15.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal16.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal17.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal18.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal19.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal20.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal21.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal22.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal23.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal24.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal25.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal26.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal27.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal28.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal29.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal30.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal31.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal32.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal33.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal34.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal35.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal36.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal37.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal38.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal39.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal40.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal41.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal42.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal43.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal44.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal45.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal46.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal47.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal48.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal49.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal50.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal51.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal52.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal53.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal54.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal55.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal56.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal57.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal58.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal59.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal60.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal61.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal62.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal63.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal64.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal65.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = "goal66.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		},
+		CVMaterialRemap
+		{
+			string m_sSearchMaterial = ".vmat.vmat"
+			string m_sReplaceMaterial = "materials/goal/goal.vmat"
+		}
+	]
+}
