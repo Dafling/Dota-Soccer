@@ -35,9 +35,11 @@ end
 
 function Ball_Enters_Goal_Actions(trigger)
 	print("Goal triggered!")
+	DeepPrintTable(trigger)
 	local Ball = GameRules.Ball
 	local time = 1
 	GameRules.Goals[1] = GameRules.Goals[1] + 1
+	GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_GOODGUYS, GameRules.Goals[1])
 	Ball.Location = GetRectCenter('pt_center')
 	Ball:fullStopDelayed(time)
 end

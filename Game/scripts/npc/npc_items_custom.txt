@@ -12,7 +12,58 @@
       "RunScript"
       {
         "ScriptFile"  "abils.lua"
-        "Function"    "Q_Actions"
+        "Function"    "Pass_Actions"
+      }
+    }
+  }
+
+  "item_kick"
+  {
+    "BaseClass"             "item_datadriven"
+    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "AbilityTextureName"    "BTNkickslide"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abils.lua"
+        "Function"    "Kick_Actions"
+        "Target"    "POINT"
+      }
+    }
+  }
+
+  "item_longpass"
+  {
+    "BaseClass"             "item_datadriven"
+    "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "AbilityTextureName"    "BTNlongpass"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abils.lua"
+        "Function"    "LongPass_Actions"
+        "Target"    "POINT"
+      }
+    }
+  }
+
+  "item_jump"
+  {
+    "BaseClass"             "item_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "AbilityTextureName"    "BTNjump"
+    "AbilityCooldown"       "2.85"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "abils.lua"
+        "Function"    "Jump_Actions"
       }
     }
 

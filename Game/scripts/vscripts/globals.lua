@@ -31,21 +31,29 @@ function GameMode:ExampleConsoleCommand2()
 end
 
 function RegisterCommands()
+	print "Registering commands..."
 	Convars:RegisterCommand( "cmd_ex", Dynamic_Wrap(GameMode, 'ExampleConsoleCommand2'), "A console command example", FCVAR_CHEAT )
 
 	Convars:RegisterCommand( "get", function(name, parameter)
 	    local cmdPlayer = Convars:GetCommandClient()
 	    if cmdPlayer then 
-	        return SetGetBallDist( tonumber(parameter) )
+	        SetGetBallDist( tonumber(parameter) )
 	    end
 	 end, "Set 'get ball distance' to specified value", 0 )
 
 	Convars:RegisterCommand( "goal", function(name, parameter)
 	    local cmdPlayer = Convars:GetCommandClient()
 	    if cmdPlayer then 
-	        return SetGoalScale( tonumber(parameter) )
+	        SetGoalScale( tonumber(parameter) )
 	    end
 	 end, "Set goal model scale", 0 )
+
+	Convars:RegisterCommand( "new", function(name, parameter)
+	    local cmdPlayer = Convars:GetCommandClient()
+	    if cmdPlayer then
+	        GameRules.Ball:new()
+	    end
+	 end, "Create new ball", 0 )
 end
 
 function echo(s)
@@ -64,10 +72,16 @@ function DrawLine(rect, imin, imax, x, y)
 	imin = imin*(20/step)
 	imax = imax*(20/step)
 	for i = imin, imax do
-		local line = CreateUnitByName("npc_line", pos_line + line_v*i*step, false, nil, nil, DOTA_TEAM_NOTEAM)
+		local line = CreateUnitByName("line", pos_line + line_v*i*step, false, nil, nil, DOTA_TEAM_NOTEAM)
 		line:SetForwardVector(Vector(y,x,0))
 		line:SetHullRadius(0.0)
 	end
+end
+
+function DrawPitchElement(type, rect, x, y)
+	local line = CreateUnitByName(type, GetRectCenter(rect), false, nil, nil, DOTA_TEAM_NOTEAM)
+	line:SetForwardVector(Vector(x,y,0))
+	line:SetHullRadius(0.0)
 end
 
 function DrawLines()
@@ -95,6 +109,17 @@ function DrawLines()
 	x,y = -101,87
 	DrawLine("rct_line_top", x, y, 1, 0)
 	DrawLine("rct_line_btm", x, y, 1, 0)
+	
+	DrawPitchElement("halfcircle", "halfcircle_left", 0, 1)
+	DrawPitchElement("halfcircle", "halfcircle_right", 0, -1)
+
+	DrawPitchElement("cornercircle", "pt_corner_TL", 0, 1)
+	DrawPitchElement("cornercircle", "pt_corner_BL", -1, 0)
+	DrawPitchElement("cornercircle", "pt_corner_TR", 1, 0)
+	DrawPitchElement("cornercircle", "pt_corner_BR", 0, -1)
+
+	DrawPitchElement("circle", "pt_center", 1, 0)
+	DrawPitchElement("ballplace", "pt_center", 1, 0)
 end
 
 function CreateGoals()
@@ -108,10 +133,11 @@ function CreateGoals()
 end
 
 function SetGameplayConstants()
+	print "Setting gameplay constants..."
 	G = 2.3
 
 	GET_BALL_DIST 				= 125
-	OWN_BALL_DIST				= GET_BALL_DIST/2
+	--OWN_BALL_DIST				= GET_BALL_DIST/2
 
 	GROUND_FRICTION_SLOWDOWN 	= 10.0
 	GROUND_HIT_SLOWDOWN 		= 50.0

@@ -18,6 +18,7 @@ require('libraries/physics')
 require('libraries/projectiles')
 -- This library can be used for sending panorama notifications to the UIs of players/teams/everyone
 require('libraries/notifications')
+require('libraries/animations')
 
 -- These internal libraries set up barebones's events and processes.  Feel free to inspect them/change them if you need to.
 require('internal/gamemode')
@@ -86,7 +87,7 @@ function GameMode:OnHeroInGame(hero)
 
   -- These lines will create an item and add it to the player, effectively ensuring they start with the item
   local item = CreateItem("item_example_item", hero, hero)
-  hero:AddItem(item)
+  --hero:AddItem(item)
 
   --[[ --These lines if uncommented will replace the W ability of any hero that loads into the game
     --with the "example_ability" ability
@@ -95,10 +96,10 @@ function GameMode:OnHeroInGame(hero)
   hero:RemoveAbility(abil:GetAbilityName())
   hero:AddAbility("example_ability")]]
 
-  if not GameRules.Ball then
-    GameMode:InitActions()
-  end
-  Hero:new(hero)
+  local id = hero:GetPlayerOwner():GetPlayerID()
+  Hero[id] = Hero:new(hero)
+  Hero[Hero[id].u] = Hero[id]
+  GameRules.Heroes[id] = Hero[id]
 end
 
 --[[
@@ -135,6 +136,10 @@ function GameMode:InitGameMode()
   Convars:RegisterCommand( "command_example", Dynamic_Wrap(GameMode, 'ExampleConsoleCommand'), "A console command example", FCVAR_CHEAT )
 
   DebugPrint('[BAREBONES] Done loading Barebones gamemode!\n\n')
+
+  if not GameRules.Ball then
+    GameMode:InitActions()
+  end
 end
 
 -- This is an example console command

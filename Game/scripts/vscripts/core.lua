@@ -56,7 +56,7 @@ function GameMode:Ball_Periodic_Actions()
     else -- place ball in front of owner
         local h = Ball.Owner
         Ball.H = Ball.DefaultHeight + h.H
-		Ball:setVector( h:getVector() + OWN_BALL_DIST*h:fVector() + Ball.DefaultHeight*Ball:uVector() )
+		Ball:setVector( h:getVector() + (GET_BALL_DIST/2)*h:fVector() + Ball.DefaultHeight*Ball:uVector() )
     end
 end
 
@@ -117,8 +117,8 @@ function Get_Ball(h)
     h:msg("YOU GOT THE BALL!")
     
     Ball.Speed = 0
-    Ball.u:RemoveGesture(ACT_DOTA_RUN)
-    Ball.u:StartGesture(ACT_DOTA_IDLE)
+    --StartAnimation(Ball.u, {duration=5, activity=ACT_DOTA_RUN, rate=0.2}) --RUN/IDLE
+    --EndAnimation(Ball.u)
     --Ball.Scale = 350
 end
 
@@ -147,27 +147,28 @@ function GameMode:Set_Ball_Owner()
 
 	--[[ FindUnitsInRadius(int teamNumber, Vector position, handle cacheUnit, float radius, 
 		int teamFilter, int typeFilter, int flagFilter, int order, bool canGrowCache) --]]
-	for _,u in pairs(Entities:FindAllInSphere(Ball:getVector(), GET_BALL_DIST) ) do
-		local h = Hero[u]
+	--for _,u in pairs(Entities:FindAllInSphere(Ball:getVector(), GET_BALL_DIST) ) do
+	for id = 0, 15 do
+		--local h = Hero[u]
+		--local h = Hero[id]
+		local h = GameRules.Heroes[id]
 
-		if h then
-		    if not CanUnitGetBall(h) then return end
-		        
-		    if CanUnitHeadBall(h) then
-		        if (Ball.Owner == nil) then
-		            GameMode:Heading_Actions(h)
-		            --f = Dynamic_Wrap(GameMode, "Heading_Actions"); f() --h
-		        end
-		    else
-		        Flag:hide()
-		        if h.Slide_Vx and h.Slide_Vx > 0 then
-		            if not (Ball.Owner and Ball.Owner.IsInAir) then
-		                Sliding_Actions(h)
-		            end
-		        elseif not h.SlowDown then --if not Per_003_Execution
-		            Get_Ball(h)
-		        end
-		    end
-		end
+		if not h or not CanUnitGetBall(h) then return end
+	        
+	    if CanUnitHeadBall(h) then
+	        if (Ball.Owner == nil) then
+	            GameMode:Heading_Actions(h)
+	            --f = Dynamic_Wrap(GameMode, "Heading_Actions"); f() --h
+	        end
+	    else
+	        Flag:hide()
+	        if h.Slide_Vx and h.Slide_Vx > 0 then
+	            if not (Ball.Owner and Ball.Owner.IsInAir) then
+	                Sliding_Actions(h)
+	            end
+	        elseif not h.SlowDown then --if not Per_003_Execution
+	            Get_Ball(h)
+	        end
+	    end
 	end
 end

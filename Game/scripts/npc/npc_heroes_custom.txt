@@ -2,12 +2,18 @@
 {
     "npc_dota_hero_peasant"
     {
+        "AbilityLayout"     "6"
         "override_hero"             "npc_dota_hero_zuus"
-        "Ability1"                  "Q"
-        "Ability2"                  "W"
-        "Ability3"                  "E"
-        "Ability4"                  "Jump"
+        "ModelScale"                ".7"
+
+        //"Ability1"                  "Pass"
+        //"Ability2"                  "Kick"
+        //"Ability3"                  "Long_Pass"
+        //"Ability4"                  "Jump"
+        "Ability5"                  "out_of_game"
+
         "VisionNighttimeRange"      "1800"
+        "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
     }
 
 

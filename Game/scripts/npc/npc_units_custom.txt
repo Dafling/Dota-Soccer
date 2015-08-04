@@ -3,129 +3,121 @@
 {
   "Version" "1"
   
-  "npc_dummy"
-  {
-    "Model"                     "models/dummy/dummy.vmdl"
-    "BaseClass"                 "npc_dota_creature"
-    "ModelScale"                "1.0"
+  "Kobold"
+    {
+        "Model"                     "models/creeps/neutral_creeps/n_creep_kobold/kobold_c/n_creep_kobold_frost.vmdl"
+        "BaseClass"                 "npc_dota_creature"
+        "ModelScale"                ".9"
 
-    "RingRadius"                "0"
-    "HealthBarOffset"           "1000"
-  }
+        "Ability1"                  "Pass"
+        "Ability2"                  "Kick"
+        "Ability3"                  "Long_Pass"
+        "Ability4"                  "Jump"
+        "Ability5"                  "Teleport"
+
+        "AbilityLayout"             "6"
+        "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
+        "RingRadius"                "0"
+        "HealthBarOffset"           "1000"
+        "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_GROUND"
+        "MovementSpeed"             "290"                    
+        "TeamName"                  "DOTA_TEAM_NEUTRALS"
+    }
 
   "npc_flag"
   {
-    // General
-    //----------------------------------------------------------------
     "Model"                     "models/flag/flag.vmdl"
     "BaseClass"                 "npc_dota_creature"
     "ModelScale"                ".5"
-
-    // Bounds
-    //----------------------------------------------------------------
     "RingRadius"                "0"
     "HealthBarOffset"           "1000"
   }
 
-  "npc_line"
+    "halfcircle"
   {
-    // General
-    //----------------------------------------------------------------
+    "Model"                     "models/line/halfcircle.vmdl"
+    "BaseClass"                 "npc_dota_creature"
+    "ModelScale"                "6.5"
+    "RingRadius"                "0"
+    "HealthBarOffset"           "1000"
+  }
+
+  "cornercircle"
+  {
+    "Model"                     "models/line/cornercircle.vmdl"
+    "BaseClass"                 "npc_dota_creature"
+    "ModelScale"                "2.5"
+    "RingRadius"                "0"
+    "HealthBarOffset"           "1000"
+  }
+
+  "circle"
+  {
+    "Model"                     "models/line/circle.vmdl"
+    "BaseClass"                 "npc_dota_creature"
+    "ModelScale"                "11"
+    "RingRadius"                "0"
+    "HealthBarOffset"           "1000"
+  }
+
+  "ballplace"
+  {
+    "Model"                     "models/line/ballplace.vmdl"
+    "BaseClass"                 "npc_dota_creature"
+    "ModelScale"                "2"
+    "RingRadius"                "0"
+    "HealthBarOffset"           "1000"
+  }
+
+  "line"
+  {
     "Model"                     "models/line/line.vmdl"
     "BaseClass"                 "npc_dota_creature"
     "ModelScale"                ".3"
     // when changing ModelScale, might have to adjust step in DrawLine() accordingly
     // as well as imin and imax parameters
-
-    // Bounds
-    //----------------------------------------------------------------
     "RingRadius"                "0"
     "HealthBarOffset"           "1000"
   }
 
   "npc_ball"
   {
-    // General
-    //----------------------------------------------------------------
     "Model"                     "models/brazuca/brazuca.vmdl"
     "BaseClass"                 "npc_dota_creature"
     "ModelScale"                ".7"
-
-    // Bounds
-    //----------------------------------------------------------------
     "RingRadius"                "0"
     "HealthBarOffset"           "1000"
   }
 
   "npc_goal"
   {
-    // General
-    //----------------------------------------------------------------
     "Model"                     "models/goal/goal.vmdl"
     "BaseClass"                 "npc_dota_creature"
     "ModelScale"                "3.7"
-
-    // Bounds
-    //----------------------------------------------------------------
     "RingRadius"                "0"
     "HealthBarOffset"           "1000"
   }
 
   "Peasant"
   {
-    // General
-    //----------------------------------------------------------------
     "Model"                     "models/peasant/peasant.vmdl"
     "BaseClass"                 "npc_dota_creature"
     "ModelScale"                "1.0"
-
-    // Bounds
-    //----------------------------------------------------------------
     "RingRadius"                "0"
     "HealthBarOffset"           "1000"
   }
 
-  "Kobold"
-    {
-        // General
-        //----------------------------------------------------------------
-        "Model"                     "models/creeps/neutral_creeps/n_creep_kobold/kobold_c/n_creep_kobold_frost.vmdl"
-        "BaseClass"                 "npc_dota_creature"
-        "ModelScale"                ".9"
-
-        // Abilities
-        //----------------------------------------------------------------
-        "Ability1"                  "Q"
-        "Ability2"                  "W"
-        "Ability3"                  "E"
-        "Ability4"                  "Jump"
-        "Ability5"                  "Teleport"
-        "Ability6"                  "item_pass"
-
-        // Attack
-        //----------------------------------------------------------------
-        "AttackCapabilities"        "DOTA_UNIT_CAP_NO_ATTACK"
-
-        // Bounds
-        //----------------------------------------------------------------
-        "RingRadius"                "0"
-        "HealthBarOffset"           "1000"
-
-        // Movement
-        //----------------------------------------------------------------
-        "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_GROUND"
-        "MovementSpeed"             "290"                    
-
-        // Team
-        //----------------------------------------------------------------
-        "TeamName"                  "DOTA_TEAM_NEUTRALS"
-        //"UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-    }
+  "npc_dummy"
+  {
+    "Model"                     "models/dummy/dummy.vmdl"
+    "BaseClass"                 "npc_dota_creature"
+    "ModelScale"                "1.0"
+    "RingRadius"                "0"
+    "HealthBarOffset"           "1000"
+  }
 
   "npc_dummy_unit"
   {
-    // General
-    //
     "BaseClass"         "npc_dota_base_additive"  // Class of entity of link to.
     "Model"           "models/development/invisiblebox.vmdl"  // Model.
     "SoundSet"          "Creep_Good_Range"          // Name of sound set.
@@ -178,8 +170,7 @@
     "BountyGoldMin"       "0"     // Gold earned min.
     "BountyGoldMax"       "0"     // Gold earned max.
 
-    // Bounds
-    //----------------------------------------------------------------
+    
     "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"      // Hull type used for navigation/locomotion.
 
     // Movement

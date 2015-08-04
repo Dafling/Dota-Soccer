@@ -1,6 +1,7 @@
 Ball = {}
 
 function Ball:new()
+	print "Creating ball..."
 	Ball.DefaultHeight = 10.0
 	local newObj = { u = nil, DefaultHeight = 10.0, H = 0.0, Vz = 0.0, Speed = 0.0, Owner = nil, CantInteract = false, IsInAir = false }
 	self.__index = self

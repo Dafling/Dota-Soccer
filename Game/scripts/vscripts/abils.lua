@@ -6,12 +6,20 @@ function GetSpellAbilityUnit(keys)
 	return keys.caster
 end
 
-function Q_Actions(keys)
+function GetHero(id)
+	--return GameRules.Heroes[id]
+	return Hero[id]
+end
+
+function Pass_Actions(keys)
 	print("Q actions")
 	local Ball = GameRules.Ball
 	local id = keys.caster:GetPlayerOwnerID()
-	local h = Hero[id]
+	local h = GetHero(id)
 	print("Q id ="..id)
+	print("h.u.id = "..h.u.id)
+	print("h.id = "..h.id)
+	print("GameRules.Heroes[id].id = "..GameRules.Heroes[id].id)
 
 	if not (Ball.Owner and Ball.Owner.IsInAir) then
 		h:dispossess(CANT_HOLD_BALL_TIME_SHOT)
@@ -31,10 +39,10 @@ function Q_Actions(keys)
 	--GameMode:ShotCommonActions()
 end
 
-function W_Actions(keys)
+function Kick_Actions(keys)
 	local Ball = GameRules.Ball
 	local id = keys.caster:GetPlayerOwnerID()
-	local h = Hero[id]
+	local h = GetHero(id)
 	local direction
 
 	if h == Ball.Owner then
@@ -77,10 +85,10 @@ function W_Actions(keys)
 	h:turn(direction)
 end
 
-function E_Actions(keys)
+function LongPass_Actions(keys)
 	local Ball = GameRules.Ball
 	local id = keys.caster:GetPlayerOwnerID()
-	local h = Hero[id]
+	local h = GetHero(id)
 
 	if not Ball.Owner or Ball.Owner.IsInAir then 
 		h:turn(keys.target_points[1] - h:getPos())
@@ -112,7 +120,7 @@ end
 function Jump_Actions(keys)
 	local Ball = GameRules.Ball
 	local id = keys.caster:GetPlayerOwnerID()
-	local h = Hero[id]
+	local h = GetHero(id)
 	local u_saved = h.u
     
 	if keys.caster:IsHero() then h.u = keys.caster; print("caster is hero!") end
@@ -129,7 +137,7 @@ function Jump_Actions(keys)
 	Timers:CreateTimer(0.1, function()
     	if h.IsInAir then
     		h:setHeight(h.H)
-    		return 0.03
+    		return 0.02
     	end
     	return
     end)
@@ -165,7 +173,7 @@ end
 
 function Teleport_Actions(keys)
 	local id = keys.caster:GetPlayerOwnerID()
-	local h = Hero[id]
+	local h = GetHero(id)
 	h:setVector(keys.target_points[1])
 	h:stop()
 end

@@ -4,7 +4,7 @@
 {
   "Version"   "1"
   
-  "Q"
+  "Pass"
   {
     "BaseClass"             "ability_datadriven"
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
@@ -16,13 +16,13 @@
       "RunScript"
       {
         "ScriptFile"  "abils.lua"
-        "Function"    "Q_Actions"
+        "Function"    "Pass_Actions"
       }
     }
 
   }
 
-  "W"
+  "Kick"
   {
     "BaseClass"             "ability_datadriven"
     "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
@@ -33,13 +33,13 @@
       "RunScript"
       {
         "ScriptFile"  "abils.lua"
-        "Function"    "W_Actions"
+        "Function"    "Kick_Actions"
         "Target"    "POINT"
       }
     }
   }
 
-  "E"
+  "Long_Pass"
   {
     "BaseClass"             "ability_datadriven"
     "AbilityBehavior"   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
@@ -50,7 +50,7 @@
       "RunScript"
       {
         "ScriptFile"  "abils.lua"
-        "Function"    "E_Actions"
+        "Function"    "LongPass_Actions"
         "Target"    "POINT"
       }
     }
@@ -62,6 +62,10 @@
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
     "AbilityTextureName"    "BTNjump"
     "AbilityCooldown"       "2.85"
+
+    "MaxLevel"               "1"
+    "RequiredLevel"          "1"
+    "LevelsBetweenUpgrades"  "1"
 
     "OnSpellStart"
     {
@@ -90,6 +94,28 @@
     }
   }
 
+  ﻿"out_of_game"
+  {
+    "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    "BaseClass" "ability_datadriven"
+    "Modifiers"
+    {
+        "modifier_out_of_game"
+      {
+        "Passive" "1"
+        "IsHidden"  "1"
+            "States"
+        {
+          "MODIFIER_STATE_UNSELECTABLE" "MODIFIER_STATE_VALUE_ENABLED"
+          "MODIFIER_STATE_OUT_OF_GAME"  "MODIFIER_STATE_VALUE_ENABLED"
+        }
+
+      }
+
+    }
+
+  }
+  
   "example_ability"
   {
     "ID"              "1852"
