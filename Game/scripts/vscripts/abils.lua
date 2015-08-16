@@ -1,5 +1,7 @@
 function GameMode:ShotCommonActions()
-	--
+	local Ball = GameRules.Ball
+	Ball.Mode = 0
+	--Ball.Location = nil
 end
 
 function GetSpellAbilityUnit(keys)
@@ -7,7 +9,6 @@ function GetSpellAbilityUnit(keys)
 end
 
 function GetHero(id)
-	--return GameRules.Heroes[id]
 	return Hero[id]
 end
 
@@ -16,10 +17,6 @@ function Pass_Actions(keys)
 	local Ball = GameRules.Ball
 	local id = keys.caster:GetPlayerOwnerID()
 	local h = GetHero(id)
-	print("Q id ="..id)
-	print("h.u.id = "..h.u.id)
-	print("h.id = "..h.id)
-	print("GameRules.Heroes[id].id = "..GameRules.Heroes[id].id)
 
 	if not (Ball.Owner and Ball.Owner.IsInAir) then
 		h:dispossess(CANT_HOLD_BALL_TIME_SHOT)
@@ -36,7 +33,7 @@ function Pass_Actions(keys)
 	Ball:setfVector(h:fVector())
 
 	h:dispossess(CANT_HOLD_BALL_TIME_SHOT)
-	--GameMode:ShotCommonActions()
+	GameMode:ShotCommonActions()
 end
 
 function Kick_Actions(keys)
@@ -60,6 +57,7 @@ function Kick_Actions(keys)
 		--h:stop()
 
 		Ball:playSound("Ball.Kick")
+		GameMode:ShotCommonActions()
 
     elseif not h.IsInAir and not h.SlowDown then
     	direction = keys.target_points[1] - h:getPos()
@@ -69,8 +67,6 @@ function Kick_Actions(keys)
         
         Timers:CreateTimer(0.1, function()
             if not h.SlowDown then
-                --sld.destroy()
-                --h.Slide = nil
                 h.Slide_Vx = nil
                 h.Slide_Direction = nil
                 return
@@ -90,15 +86,14 @@ function LongPass_Actions(keys)
 	local id = keys.caster:GetPlayerOwnerID()
 	local h = GetHero(id)
 
-	if not Ball.Owner or Ball.Owner.IsInAir then 
+	if not Ball.Owner or Ball.Owner ~= h or Ball.Owner.IsInAir then 
 		h:turn(keys.target_points[1] - h:getPos())
 		return
 	end
 
 	Ball.IsInAir 		= true
-	Ball.Vz 			= 30
+	Ball.Vz 			= 30 --30
 	Ball.H 				= Ball.DefaultHeight
-	--Ball.u:StartGesture(ACT_DOTA_RUN)
 
 	local direction = keys.target_points[1] - Ball:getPos()
 	Ball:setfVector(direction)
@@ -115,24 +110,23 @@ function LongPass_Actions(keys)
 	h:turn(direction)
 
 	Ball:playSound("Ball.Kick")
+	GameMode:ShotCommonActions()
 end
 
 function Jump_Actions(keys)
 	local Ball = GameRules.Ball
 	local id = keys.caster:GetPlayerOwnerID()
 	local h = GetHero(id)
-	local u_saved = h.u
-    
-	if keys.caster:IsHero() then h.u = keys.caster; print("caster is hero!") end
+
+	print("Jump id ="..id)
+	print("h.id = "..h.id)
+	print("h.u.id = "..h.u.id)
+	print("Hero[id].id = "..Hero[id].id)
 
     if h.IsInAir or h.SlowDown then return end
-
-    --h.u:SetMoveCapability(DOTA_UNIT_CAP_MOVE_FLY)
     
 	h.IsInAir = true
     h.Vz = (Ball.Owner == h) and 15 or 20
-    
-	local coef = 1 --0.3 to 1
 
 	Timers:CreateTimer(0.1, function()
     	if h.IsInAir then
@@ -143,37 +137,32 @@ function Jump_Actions(keys)
     end)
 
 	Timers:CreateTimer(0.1, function()
-		if h.H > h.H+coef*h.Vz and math.abs(h.Vz) <= coef*G then
-			print((coef/10).." max height: "..h.H)
+		if h.H > h.H+h.Vz and math.abs(h.Vz) <= G then
+			print((0.1).." max height: "..h.H)
 		end
 
-	  	h.H = h.H + coef*h.Vz
-		h:setHeight(h.H) -- Vector(0,0,h.H)
-		--h.u:SetAbsOrigin(GetGroundPosition(h.u:GetAbsOrigin(),h.u)+Vector(0,0,h.H))
-		h.Vz = h.Vz - coef*G
-		--print("h.H="..h.H)
+	  	h.H = h.H + h.Vz
+		h:setHeight(h.H)
+		h.Vz = h.Vz - G
 
 		-- landing check
 		if h.H < 0 then
             h.IsInAir = false
             h.H = 0
             h:setHeight( h.H )
-            --h.u:SetAbsOrigin(GetGroundPosition(h.u:GetAbsOrigin(),h.u)+Vector(0,0,h.H))
             h.Vz = 0
-
-            --h.u:SetMoveCapability(DOTA_UNIT_CAP_MOVE_GROUND)
-            if h.u:IsHero() then h.u = u_saved end
-
             return
         end
 
-		return coef/10
+		return 0.1
 	end)
 end
 
 function Teleport_Actions(keys)
 	local id = keys.caster:GetPlayerOwnerID()
 	local h = GetHero(id)
+	local Ball = GameRules.Ball
+	Ball.Mode = 0
 	h:setVector(keys.target_points[1])
 	h:stop()
 end

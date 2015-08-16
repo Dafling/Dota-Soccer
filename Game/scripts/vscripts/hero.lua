@@ -1,24 +1,23 @@
 Hero = {}
 
-GameRules.Heroes = {}
-
 function Hero:new(hero)
-	--hero:AddNoDraw()
+	hero:AddNoDraw()
 	hero:SetHullRadius(0.0)
 	--hero:SetAbsOrigin(GetRectCenter("rct_heroes"))
-
-  	local newObj = { u = nil, H = 0.0, Vz = 0.0, Tallness = 100, CantHoldBall = false, SlowDown = false, IsInAir = false, id = nil }
   	self.__index = self
 
   	local id = hero:GetPlayerOwner():GetPlayerID()
-  	local pos = GetRectCenter("rct_left_spawn")
-	self.u = hero --CreateUnitByName("Kobold", pos, true, hero, hero, hero:GetTeam()) --hero
-	self.id = id; self.u.id = id
+  	local pos
+  	if hero:GetTeam() == DOTA_TEAM_GOODGUYS then
+  		pos = GetRectCenter("rct_left_spawn")
+  	else pos = GetRectCenter("rct_right_spawn")	end
+
+	self.u = CreateUnitByName("Kobold", pos, true, hero, hero, hero:GetTeam()) --hero
+	self.id = id
 	self:setVector(pos)
 	self.u:SetControllableByPlayer(id, true)
 	self.u:SetHullRadius(0.0)
 	print("New hero id ="..id)
-	echo("Hero id = "..id)
 	print("Hero's team  ="..self.u:GetTeam())
 
 	self:giveNewItem("item_pass")
@@ -26,24 +25,19 @@ function Hero:new(hero)
 	self:giveNewItem("item_longpass")
 	self:giveNewItem("item_jump")
 
-	GameRules.Heroes[id] = {}
-	hero 			= GameRules.Heroes[id]
-	hero.u 			= self.u
-	hero.H 			= 0.0
-	hero.Vz 		= 0.0
-	hero.Tallness 	= 100
-	hero.CantHoldBall = false
-	hero.SlowDown 	= false
-	hero.IsInAir 	= false
-	hero.id 		= id
+	Hero[id] = { id = id, u = self.u, H = 0.0, Vz = 0.0, Tallness = 100, 
+		CantHoldBall = false, SlowDown = false, IsInAir = false }
 
 	local h = self
+	h.u.id = id
 	print("Created id ="..id)
-	print("h.u.id = "..h.u.id)
 	print("h.id = "..h.id)
-	print("GameRules.Heroes[id].id = "..GameRules.Heroes[id].id)
+	print("h.u.id = "..h.u.id)
+	print("Hero[id].id = "..Hero[id].id)
 
-  	return setmetatable(newObj, self)
+	ScoreBoard:CreatePlayer({playerID=id, header="The Mighties"})   
+
+  	return setmetatable(Hero[id], self)
 end
 
 function Hero:turn(v)
@@ -65,6 +59,10 @@ function Hero:giveNewItem(item_name)
 end
 
 function Hero:getTeam()
+	return self.u:GetTeam()
+end
+
+function Hero:GetTeam()
 	return self.u:GetTeam()
 end
 
@@ -96,6 +94,7 @@ function Hero:dispossess(time)
         self:disableInteraction(time)
     end
     Ball.Owner = nil
+    Ball.LastUser = self
 end
 
 function Hero:slowDown(time)
@@ -122,7 +121,7 @@ function Hero:setSpeed(speed)
 end
 
 function Hero:setHeight(h)
-	Hero:setVector(Hero:getPos() + Vector(0,0,h)) -- Hero:uVector()*h
+	self:setVector(self:getPos() + Vector(0,0,h)) -- Hero:uVector()*h
 end
 
 function Hero:getVector()

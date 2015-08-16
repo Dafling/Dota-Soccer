@@ -19,6 +19,7 @@ require('libraries/projectiles')
 -- This library can be used for sending panorama notifications to the UIs of players/teams/everyone
 require('libraries/notifications')
 require('libraries/animations')
+require('libraries/scoreboard')
 
 -- These internal libraries set up barebones's events and processes.  Feel free to inspect them/change them if you need to.
 require('internal/gamemode')
@@ -98,8 +99,6 @@ function GameMode:OnHeroInGame(hero)
 
   local id = hero:GetPlayerOwner():GetPlayerID()
   Hero[id] = Hero:new(hero)
-  Hero[Hero[id].u] = Hero[id]
-  GameRules.Heroes[id] = Hero[id]
 end
 
 --[[

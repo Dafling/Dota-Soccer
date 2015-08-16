@@ -125,11 +125,13 @@ end
 function CreateGoals()
 	GameRules.Goals = {[1] = 0, [2] = 0}
 	local goals = GameRules.Goals
-	goals['left'] = CreateUnitByName("npc_goal", GetRectCenter("rct_goal_left"), false, nil, nil, DOTA_TEAM_NOTEAM)
-	goals['right'] = CreateUnitByName("npc_goal", GetRectCenter("rct_goal_right"), false, nil, nil, DOTA_TEAM_NOTEAM)
+	goals['left'] = CreateUnitByName("npc_goal", GetRectCenter("pt_goal_left"), false, nil, nil, DOTA_TEAM_NOTEAM)
+	goals['right'] = CreateUnitByName("npc_goal", GetRectCenter("pt_goal_right"), false, nil, nil, DOTA_TEAM_NOTEAM)
 	goals['right']:SetForwardVector(Vector(-1,0,0))
 	goals['left']:SetHullRadius(0.0)
 	goals['right']:SetHullRadius(0.0)
+	goals.left:SetAbsOrigin(GetRectCenter("pt_goal_left"))
+	goals.right:SetAbsOrigin(GetRectCenter("pt_goal_right"))
 end
 
 function SetGameplayConstants()
@@ -146,6 +148,23 @@ function SetGameplayConstants()
     CANT_HOLD_BALL_TIME_SHOT          = 0.9
 end
 
+function InitScoreboard()
+	ScoreBoard:Setup({header={"The Wackies", "The Mighties"},x="10px", headertext={true, true}, headerstyle={Team1Header, Team2Header}})
+
+	ScoreBoard:CreateColumnHeader({name="Name",     header="The Wackies", visible=true, style=Team1Content})
+	ScoreBoard:CreateColumnHeader({name="Level", header="The Wackies", visible=true, style=Team1Content})
+	ScoreBoard:CreateColumnHeader({name="Gold",     header="The Wackies", visible=true, style=Team1Part2})
+	ScoreBoard:CreateColumnHeader({name="Lumber",   header="The Wackies", visible=true, style=Team1Content})
+	ScoreBoard:CreateColumnHeader({name="Deaths",   header="The Wackies", visible=true, style=Team1Content})
+	ScoreBoard:CreateColumnHeader({name="Revives",  header="The Wackies", visible=true, style=Team1Content})         
+	ScoreBoard:CreateColumnHeader({name="Name",   header="The Mighties", visible=true, style=Team2Content})
+	ScoreBoard:CreateColumnHeader({name="Level",    header="The Mighties", visible=true, style=Team2Content})
+	ScoreBoard:CreateColumnHeader({name="Gold",     header="The Mighties", visible=true, style=Team2Content})
+	ScoreBoard:CreateColumnHeader({name="Lumber",   header="The Mighties", visible=true, style=Team2Content})
+	ScoreBoard:CreateColumnHeader({name="Deaths",   header="The Mighties", visible=true, style=Team2Content})
+	ScoreBoard:CreateColumnHeader({name="Revives",  header="The Mighties", visible=true, style=Team2Content})
+end
+
 function GameMode:InitActions()
 	echo("Join the discussion at http://dotasoccer.freeforums.net/")
 
@@ -158,9 +177,15 @@ function GameMode:InitActions()
 	CreateGoals()
 	DrawLines()
 
+	InitScoreboard()
+
 	Timers:CreateTimer(function()
 		GameMode:Ball_Periodic_Actions()
         GameMode:Set_Ball_Owner()
 	 	return .1 --.03
+	end)
+	Timers:CreateTimer(function()
+		GameMode:HAnim()
+	 	return .03
 	end)
 end

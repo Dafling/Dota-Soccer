@@ -5,9 +5,9 @@
   
   "Kobold"
     {
-        "Model"                     "models/creeps/neutral_creeps/n_creep_kobold/kobold_c/n_creep_kobold_frost.vmdl"
+        "Model"                     "models/heroes/zuus/zuus.vmdl" // "models/creeps/neutral_creeps/n_creep_kobold/kobold_c/n_creep_kobold_frost.vmdl"
         "BaseClass"                 "npc_dota_creature"
-        "ModelScale"                ".9"
+        "ModelScale"                ".8"
 
         "Ability1"                  "Pass"
         "Ability2"                  "Kick"

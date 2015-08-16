@@ -32,3 +32,9 @@ e messages
 
 17.07
 +published map
+
+05.08
++multiple players support
+
+08.08
++solved OnStartTouch issue

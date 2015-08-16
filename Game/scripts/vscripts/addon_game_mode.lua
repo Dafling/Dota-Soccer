@@ -51,6 +51,7 @@ function Precache( context )
   PrecacheModel("models/goal/goal.vmdl", context)
   PrecacheModel("models/flag/flag.vmdl", context)
   PrecacheModel("models/peasant/peasant.vmdl", context)
+  PrecacheModel("models/heroes/zuus/zuus.vmdl", context)
 end
 
 -- Create the game mode when we activate

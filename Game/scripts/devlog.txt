@@ -1,20 +1,12 @@
 ? ball animations
-? how to get triggered rect name
-? make heroes unselectable
 ? custom tiles
 
-? asymmetrical line drawing issue
-? more efficient line drawing mechanism?
+? make heroes unselectable
 ? R/T as hotkey?
-? is Ball.H field necessary?
-? emulating bot players
-? prestart loading/skip game setup
-| PlayerResource:IsValidPlayer(int)
+? set camera view
 
 -goal physics
--throwin mechanism
 -peasant height testing
--100% smooth hero jump
 
 MPl (Multiple Players Support):
 +overtake ball possession
@@ -25,17 +17,12 @@ MPl (Multiple Players Support):
 +2 teams, 5 players each
 ?preferential get ball system
 -headers, chase Z support
--spawning on left or right side of pitch
++spawning on left or right side of pitch
 
 Testing/debugging:
-b second kobold couldnt get ball
 b wrong ball height after C -> getting ball -> Q
 b fast ball triggers OnStartTouch twice in outs
 
-f flag: fix bad movement
-f heading bugs the ball
-
-t isunitenemy() check to get ball
 t what should the get_ball_dist value be?
 ? get units in sphere/circle of radius 100
 
@@ -81,12 +68,6 @@ Gameplay options:
 -Curve
 -futsal mode
 -Keeper AI/Keeper control
-
-Edu
--lua manual
--lua x in y tutorial
--BMD's tile editor vid
--(moddota/reddit tuts)
 
 FAQ
 -how to make the pitch region transparent in editor?

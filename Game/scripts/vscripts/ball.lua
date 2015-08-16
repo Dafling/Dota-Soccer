@@ -3,7 +3,9 @@ Ball = {}
 function Ball:new()
 	print "Creating ball..."
 	Ball.DefaultHeight = 10.0
-	local newObj = { u = nil, DefaultHeight = 10.0, H = 0.0, Vz = 0.0, Speed = 0.0, Owner = nil, CantInteract = false, IsInAir = false }
+	local newObj = { u = nil, DefaultHeight = 10.0, H = 0.0, Vz = 0.0, Speed = 0.0, 
+		Owner = nil, LastUser = nil, CantInteract = false, IsInAir = false, 
+		Mode = DOTA_TEAM_GOODGUYS, Location = GetRectCenter("pt_center") }
 	self.__index = self
 
 	local pos_ball = GetRectCenter("pt_center")
@@ -14,6 +16,24 @@ function Ball:new()
 	GameRules.Ball = setmetatable(newObj, self)
 	Ball[0] = GameRules.Ball
 	return GameRules.Ball
+end
+
+function Ball:fullStopDelayed(time)
+	local Flag = GameRules.Flag
+	local Ball = GameRules.Ball
+	if Ball.Owner then
+		Ball.Owner:dispossess(time)
+	end
+	Ball:disableInteraction(time+0.5)
+	Timers:CreateTimer(time, function()
+		Ball.Vz 		= 0
+		Ball.Speed 		= 0
+		Ball.IsInAir 	= false
+		Ball:resetHeight()
+		Ball:stop()
+		Ball:setVector(Ball.Location)
+		Flag:hide()
+	end)
 end
 
 function Ball:disableInteraction(time)
